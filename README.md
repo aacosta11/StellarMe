@@ -6,9 +6,15 @@ inspiration:
 - Lobstr.co
 - SatoshiPay
 
-## Vision: 
+## Vision:
 
 provide an all in one platform for transacting on the stellar network.
+
+key feats:
+
+- messaging
+- key management
+- decentralized market trading
 
 ---
 
