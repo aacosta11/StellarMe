@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+/* .hr{} is a horizontal line */
+
+@media only screen and (max-width: 425px) {
+    .testdashwrap {
+        row-gap: .75rem;
+    }
+
+    .hr-t {
+        margin: 0 0 1.25rem 0;
+    }
+
+    .hr-b {
+        margin: 1.25rem 0 0 0;
+        
+    }
+
+    .hr {
+        width: 100vw;
+        height: 4px;
+    }
+
+    .testdashtopfill {
+        width: 100vw;
+        height: 8rem;
+        margin-bottom: .75rem;
+    }
+
+    .testusercard {
+        width: 100vw;
+        height: 300px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .testkey {
+        padding: 0 .5rem;
+        width: 99vw;
+        font-size: .8rem;
+        word-wrap: break-word;
+    }
+}
+
+.hr {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+.testdashwrap {
+    display: grid;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    background-color: aliceblue;
+}
+
+.testdashtopfill {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.testupdatecredentials {
+    background-color: cornflowerblue;
+}
+
+.testupdatecredentials h2 {
+    color:#fff;
+}
+
+.addresses {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    background-color:steelblue;
+}
+
+.testnetaccountinfo {
+    background-color: cornflowerblue;
+    color: #fff;
+}
+
+.testnetaccountinfo h2 {
+    text-decoration: underline;
+}
+
+.testnettransactpreview {
+    background-color:steelblue;
+    
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
