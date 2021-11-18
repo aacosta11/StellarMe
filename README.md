@@ -1,12 +1,48 @@
 # StellarMe
 
+MERN Full-Stack
+1st Full Project🎉🎉🎊
+
+Dependencies:
+>stellarMe/server 📂
+
+```json
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  }
+}
+```
+
+>stellarMe/client 📂
+
+```json
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.24.0",
+    "bootstrap": "^5.1.3",
+    "formik": "^2.2.9",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2",
+    "yup": "^0.32.11"
+  },
+```
+
 inspiration:
 
 - Keybase.io
 - Lobstr.co
 - SatoshiPay
 
-## Vision:
+## Vision
 
 provide an all in one platform for transacting on the stellar network.
 
@@ -41,13 +77,13 @@ vision for project week:
 -- send, recieve, access testnet faucet
 - display balance
 
-## Stellar Project Setup: 
+## Stellar Project Setup
 
 
 wallet setup: [stellar documentation](https://developers.stellar.org/docs/building-apps/project-setup/)
 
 
-### Securing Web-based Projects:
+### Securing Web-based Projects
 
 SSL/TLS
 
@@ -98,3 +134,5 @@ Scan your website and libraries for vulnerabilities
 SQL Injections
 
 - Have inputs filtered, and validated
+
+[EOF]
