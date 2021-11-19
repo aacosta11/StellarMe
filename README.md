@@ -1,10 +1,12 @@
 # StellarMe
 
 MERN Full-Stack
-1st Full Project🎉🎉🎊
+
+This site was designed for mobile screens first (screens < 425px wide), so plz use dev tools to
+browse this site with an emulated mobile screen.
 
 Dependencies:
->stellarMe/server 📂
+>stellarMe 📂 > server 📂
 
 ```json
 {
@@ -16,7 +18,7 @@ Dependencies:
 }
 ```
 
->stellarMe/client 📂
+>stellarMe 📂 > client 📂
 
 ```json
   "dependencies": {
@@ -71,18 +73,16 @@ full vision:
 
 vision for project week:
 
-- profile creation
-- albedo wallet integration
+[] profile creation
+[] albedo wallet integration
 -- or, make testnet accounts with horizon api and store public&private keys into db
-- testnet transactions
+[x] testnet transactions
 -- send, recieve, access testnet faucet
-- display balance
+[x] display balance
 
 ## Stellar Project Setup
 
-
 wallet setup: [stellar documentation](https://developers.stellar.org/docs/building-apps/project-setup/)
-
 
 ### Securing Web-based Projects
 

@@ -1,29 +1,33 @@
 import Button from "react-bootstrap/Button";
 import { Networks } from "stellar-sdk";
+
 const TestnetTransactAPI = props => {
-    const { src, amnt, reciever, response } = props;
+    const { srcSecret, amnt, reciever, response } = props;
     const StellarSdk = require("stellar-sdk");
     const fee = StellarSdk.BASE_FEE;    
-
+    const server = new StellarSdk.Server("https://horizon-testnet.stellar.org");
     // test source account
     // const srcPubKey = 'GBSN5LZY5BMBJ5J3QWRYY7WAOYG3DVRCK76PN4MR3E7GBQBINGO3SGTV';
     // const srcSecKey = 'SD7MGXUGVAQVJVKCBZSK4GHGRQYS67X4F4KU6T7P7EAVP7Y3CMCDZTTN';
     
     var srcKeyPair,srcPubKey;
-    
+
+
+    // instantiate horizon instance from stellar.org. the live network is "horizon.stellar.org"
     try {
-        srcKeyPair = StellarSdk.Keypair.fromSecret(src);
+        srcKeyPair = StellarSdk.Keypair.fromSecret(srcSecret);
         srcPubKey = srcKeyPair.publicKey();
     }
     catch {
-        return console.log("no keypair found")
+        console.log("no keypair found");
     }
 
-    // instantiate horizon instance from stellar.org. the live network is "horizon.stellar.org"
-    const server = new StellarSdk.Server("https://horizon-testnet.stellar.org");
-
     const handleClick = e => {
-        console.log('initiated transaction...')
+        console.log("Fee: ",fee + " Stroops");
+        console.log("source key: ",srcSecret);
+        if (!srcPubKey){return console.log("no source key found")}
+        console.log('initiated transaction...');
+
         // check if destination account exists
         server.loadAccount(reciever)
             .catch(err=>{
@@ -56,13 +60,11 @@ const TestnetTransactAPI = props => {
                 return server.submitTransaction(transaction);
             })
             .then(res=>{
-                response(amnt)
-                console.log("Success! Results: ",res)})
+                response(amnt);
+                console.log("Success! Results: ",res);})
             .catch(err=>{console.log("Something went wrong...", err)})
     }
 
-    return (<>
-        <Button onClick={handleClick}>Confirm</Button>
-    </>)
+    return <Button onClick={handleClick}>Confirm</Button>
 }
 export default TestnetTransactAPI;

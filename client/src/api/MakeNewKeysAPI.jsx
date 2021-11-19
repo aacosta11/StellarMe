@@ -3,7 +3,7 @@ import StellarSdk from "stellar-sdk";
 import Button from "react-bootstrap/Button";
 export default props => {
     const { response } = props;
-    const server = new StellarSdk.Server("https://horizon-testnet.stellar.org");
+    const server = new StellarSdk.Server("https://horizon-testnet.stellar.org"); // connect to Horizon API
 
     // pair.secret();
     // pair.publicKey();
@@ -14,27 +14,22 @@ export default props => {
     // console.log('secret: ')
     // console.log(pair.secret());
     const request = () => {
-        const pair = StellarSdk.Keypair.random();
+        const pair = StellarSdk.Keypair.random(); // generate a new key pair
         console.log("public key: ",pair.publicKey());
         console.log("private key: ",pair.secret());
-        axios.get(`https://friendbot.stellar.org?addr=${encodeURIComponent(
+        // testnet faucet; funds account with 10000 XLM and 
+        axios.get(`https://friendbot.stellar.org?addr=${encodeURIComponent( 
             pair.publicKey(),
         )}`)
             .then(res => {
-                response({'public':pair.publicKey(),'private':pair.secret()})
+                response({'public':pair.publicKey(),'private':pair.secret()}) // send response to parent component
                 console.log("SUCCESS! You have a new account :)\n", res.data)
             })
             .catch(err => console.log("error while creating account, ", err))
     }
-    const getTransactions = pubKey => {
-        server.transactions()
-            .forAccount(pubKey)
-            .call().then(function (r) { console.log(r) });
-    }
     const handleClick = () => {
         request();
     }
-
     return <Button onClick={handleClick}>Generate New Keys</Button>
 }
 
