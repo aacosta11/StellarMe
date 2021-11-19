@@ -31,6 +31,7 @@ Dependencies:
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
+    "stellar-sdk": "^9.1.0",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.11"
   },
