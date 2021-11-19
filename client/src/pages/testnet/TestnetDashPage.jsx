@@ -1,19 +1,21 @@
 import TestnetGetAccountAPI from "../../api/TestNetGetAccountAPI";
 import NavBarComp from "../../components/homepage/NavBarComp";
 import TestnetTransactAPI from "../../api/TestnetTransactAPI";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
 import MakeNewKeysAPI from "../../api/MakeNewKeysAPI.jsx";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/pageStyles/testDashStyle.css";
 export default props => {
-    const [keyPair, setKeyPair] = useState({ 'public': 'GC7XVS643FTWOKTFJGHPOUPG24CIVKHHB35WCPVPJEDNZRYCBN2MTC2W', 'private': '' });
-    const [balance, setBalance] = useState('');
-    const [keyPair2,setKeyPair2] = useState({'public':'','private':''});
-    const [balance2, setBalance2] = useState('');
+    const [keyPair, setKeyPair] = useState({
+        'public': 'GBSN5LZY5BMBJ5J3QWRYY7WAOYG3DVRCK76PN4MR3E7GBQBINGO3SGTV',
+        'private': 'SD7MGXUGVAQVJVKCBZSK4GHGRQYS67X4F4KU6T7P7EAVP7Y3CMCDZTTN' });
+    const [keyPair2,setKeyPair2] = useState({
+        'public':'GDQI2XSDRTOQPKUQATVKZHZ3HZNN33KRSKG5M2M4F7SW3XCU54PI7H6O',
+        'private':'SALV2QXVIWFTISFIJWPB3KOXDPQBLWJVZMCH545Q6GL4UHPTSEQ22UFW'});
+    const [balance, setBalance] = useState(0);
+    const [balance2, setBalance2] = useState(0);
     const guest1 = 'guest982';
     const guest2 = 'guest321';
     const [slots,setSlots] = useState({
@@ -21,61 +23,65 @@ export default props => {
         1:{'name':guest2,'public':keyPair2.public,'private':keyPair2.private,'balance':balance2}})
     const [tradeAmnt,setTradeAmnt] = useState(0)
 
-    const generateNewKeys = (res) => {
-        setKeyPair({...res});
-    }
-    const generateNewKeys2 = (res) => {
-        setKeyPair2({...res});
-    }
-    const handleUpdate = e => {
-        e.preventDefault();
-    }
+    useEffect(()=>{
+        slots[0].name === guest1 ?
+        setSlots({...slots,0:{'name':guest1,'public':keyPair.public,'private':keyPair.private,'balance':balance}})
+        :
+        setSlots({...slots,1:{'name':guest1,'public':keyPair.public,'private':keyPair.private,'balance':balance}})
+    }, [balance])
+    useEffect(()=>{
+        slots[0].name === guest2 ?
+        setSlots({...slots,0:{'name':guest2,'public':keyPair2.public,'private':keyPair2.private,'balance':balance2}})
+        :
+        setSlots({...slots,1:{'name':guest2,'public':keyPair2.public,'private':keyPair2.private,'balance':balance2}})
+    }, [balance2])
+    
+    const generateNewKeys = res => {setKeyPair({...res});}
+    const generateNewKeys2 = res => {setKeyPair2({...res});}
+    
     const handleAccountReport = res => {
-        setBalance(res);
-    }
+        setBalance(res);}
     const handleAccountReport2 = res => {
-        setBalance2(res);
-    }
+        setBalance2(res);}
+
     const handleTransaction2 = res => {
-        setBalance2(Math.round(((parseFloat(balance2) + parseFloat(res)) * 100) / 100).toFixed(7));
-    }
+        setBalance2((((parseFloat(balance2) + parseFloat(res)) * 100) / 100).toFixed(7));}
+    
     const handleTransaction = res => {
-        setBalance(Math.round(((parseFloat(balance) + parseFloat(res)) * 100) / 100).toFixed(7));
-    }
+        setBalance((((parseFloat(balance) + parseFloat(res)) * 100) / 100).toFixed(7));}
+    
     const handleSwapSlots = () => {
         if (slots[0].name === guest1) {
             setSlots({0:{'name':guest2,'public':keyPair2.public,'private':keyPair2.private,'balance':balance2},
             1:{'name':guest1,'public':keyPair.public,'private':keyPair.private,'balance':balance}})
-        } else {
+        } 
+        else {
             setSlots({0:{'name':guest1,'public':keyPair.public,'private':keyPair.private,'balance':balance},
-            1:{'name':guest2,'public':keyPair2.public,'private':keyPair2.private,'balance':balance2}})
-        }
+            1:{'name':guest2,'public':keyPair2.public,'private':keyPair2.private,'balance':balance2}})}
     }
 
+    const handleTradeDemo = res => {
+        slots[0].name === guest1 ?
+        <>
+        {setBalance((((parseFloat(balance) - parseFloat(res)) * 100) / 100).toFixed(7))}
+        {setBalance2((((parseFloat(balance2) + parseFloat(res)) * 100) / 100).toFixed(7))}
+        </>
+        :
+        <>
+        {setBalance((((parseFloat(balance) + parseFloat(res)) * 100) / 100).toFixed(7))}
+        {setBalance2((((parseFloat(balance2) - parseFloat(res)) * 100) / 100).toFixed(7))}
+        </>
+    }
     return (
         <>
+            <TestnetGetAccountAPI pubKey={keyPair2.public} response={handleAccountReport2} />
+            <TestnetGetAccountAPI pubKey={keyPair.public} response={handleAccountReport} />
             <div className="testdashwrap">
                 <div className="testdashtopfill">
                     <h1>Welcome, guest!</h1>
                 </div>
                 <NavBarComp />
-                <div className="testusercard testupdatecredentials">
-                    <div className="hr hr-t" />
-                    <h2>Update Login (preview)</h2>
-                    <Form onSubmit={handleUpdate}>
-                        <FloatingLabel controlId="username" label="Username" className="mb-3">
-                            <Form.Control type="text" placeholder="Username" />
-                        </FloatingLabel>
-                        <FloatingLabel
-                            controlId="floatingInput"
-                            label="Email address"
-                            className="mb-3">
-                            <Form.Control type="email" placeholder="name@example.com" className="testlogininput" />
-                        </FloatingLabel>
-                        <Button>Save Changes</Button>
-                    </Form>
-                    <div className="hr hr-b" />
-                </div>
+
                 {/* key pair for guest1 */}
                 <div className="addresses testusercard">
                     <div className="hr hr-t" />
@@ -117,38 +123,39 @@ export default props => {
                     <div className="hr hr-t" />
                     <h2>Balance for @{guest1}</h2>
                     {/* <TestnetGetAccountAPI pubKey={keyPair.public} response={handleAccountReport} /> */}
-                    <div>XLM {balance}</div>
                     {keyPair.public.length !== 0 ?
                     <>
+                    <div>{balance} XLM</div>
                     <h3>add 100 XML to your balance?</h3>
-                    <TestnetTransactAPI reciever={keyPair.public} response={handleTransaction} amnt='100' />
+                    <TestnetTransactAPI reciever={keyPair.public} response={handleTransaction} amnt='100'
+                    src={'SA4JSHUECQ4S5ECT6LGSMQPM467CDNBNAGBVFMDCNSMYUJW3ZXQNWE5O'}/>
                     </>
                     : <p>Generate Key Pairs!</p>}
                     <div className="hr hr-b" />
                 </div>
+
+                {/* balance for guest2 */}
                 <div className="testusercard testnetaccountinfo">
                     <div className="hr hr-t" />
                     <h2>Balance for @{guest2}</h2>
                     {/* <TestnetGetAccountAPI pubKey={keyPair.public} response={handleAccountReport} /> */}
-                    <div>XLM {balance2}</div>
                     {keyPair2.public.length !== 0 ?
                     <>
+                    <div>{balance2} XLM</div>
                     <h3>add 100 XML to your balance?</h3>
-                    <TestnetTransactAPI reciever={keyPair2.public} response={handleTransaction2} amnt='100' />
+                    <TestnetTransactAPI reciever={keyPair2.public} response={handleTransaction2} amnt='100' 
+                    src={'SA4JSHUECQ4S5ECT6LGSMQPM467CDNBNAGBVFMDCNSMYUJW3ZXQNWE5O'}/>
                     </>
                     : <p>Generate Key Pairs!</p>}
                     <div className="hr hr-b" />
                 </div>
-                
+
                 {/* make a trade */}
                 <div className="testusercard testnettransactpreview">
-                    <TestnetGetAccountAPI pubKey={keyPair2.public} response={handleAccountReport2} />
-                    <TestnetGetAccountAPI pubKey={keyPair.public} response={handleAccountReport} />
                     <div className="hr hr-t" />
                     <h2>Make A Trade!</h2>
-                    {slots[0].balance > 0 && <div>@{slots[0].name} Balance: XLM {slots[0].balance}</div>}
+                    <div>@{slots[0].name} Balance: XLM {slots[0].balance}</div>
                     <InputGroup className="mb-3">
-                        <InputGroup.Text id="inputGroup-sizing-default">XLM</InputGroup.Text>
                         <FormControl
                             min="1"
                             type="number"
@@ -156,17 +163,18 @@ export default props => {
                             onChange={e=>setTradeAmnt(e.target.value)}
                             aria-label="Default"
                             aria-describedby="inputGroup-sizing-default"/>
-                        <Button onClick={handleSwapSlots}>swap</Button>
+                    <InputGroup.Text id="inputGroup-sizing-default">XLM</InputGroup.Text>
+                    <Button onClick={handleSwapSlots}>swap</Button>
                     </InputGroup>
                     <div>@{slots[1].name} Balance: XLM {slots[1].balance}</div>
                     {keyPair.public.length < 1 || keyPair2.public.length < 1 ?
                     <h3>Generate Key Pairs First!</h3>
                     :
                     <TestnetTransactAPI 
-                    src={slots[0]}
+                    src={slots[0].private}
                     amnt={tradeAmnt}
                     reciever={slots[1].public}
-                    response={handleTransaction}
+                    response={handleTradeDemo}
                     />
                     }
                     <div className="hr hr-b" />

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import { Formik } from "formik";
@@ -27,6 +28,8 @@ export default props => {
     return (
         <>
             <div className="formwrap">
+                <h1>Register</h1>
+                <p>&nbsp;</p>
                 <Formik
                     validationSchema={schema}
                     onSubmit={(e) => handleSubmit(e)}
@@ -139,6 +142,8 @@ export default props => {
                                 </Form.Group>
                             </Row>
                             <Button type="submit">Submit</Button>
+                            <p>&nbsp;</p>
+                            <Link to="/login">Already have an account?</Link>
                         </Form>
                     )}
                 </Formik>

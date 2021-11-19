@@ -35,7 +35,7 @@ export default props => {
         request();
     }
 
-    return <Button onClick={handleClick}>Make New Keys</Button>
+    return <Button onClick={handleClick}>Generate New Keys</Button>
 }
 
 // public: 

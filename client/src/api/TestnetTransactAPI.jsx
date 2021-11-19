@@ -1,31 +1,35 @@
-
 import Button from "react-bootstrap/Button";
 import { Networks } from "stellar-sdk";
 const TestnetTransactAPI = props => {
-    const StellarSdk = require("stellar-sdk");
-    // destination account, in this case the user
     const { src, amnt, reciever, response } = props;
-    // source account
-    const srcPubKey = 'GBSN5LZY5BMBJ5J3QWRYY7WAOYG3DVRCK76PN4MR3E7GBQBINGO3SGTV';
-    const srcSecKey = 'SD7MGXUGVAQVJVKCBZSK4GHGRQYS67X4F4KU6T7P7EAVP7Y3CMCDZTTN';
-    const srcKeyPair = StellarSdk.Keypair.fromSecret(srcSecKey);
-    // fetch base fee
+    const StellarSdk = require("stellar-sdk");
     const fee = StellarSdk.BASE_FEE;    
+
+    // test source account
+    // const srcPubKey = 'GBSN5LZY5BMBJ5J3QWRYY7WAOYG3DVRCK76PN4MR3E7GBQBINGO3SGTV';
+    // const srcSecKey = 'SD7MGXUGVAQVJVKCBZSK4GHGRQYS67X4F4KU6T7P7EAVP7Y3CMCDZTTN';
+    
+    var srcKeyPair,srcPubKey;
+    
+    try {
+        srcKeyPair = StellarSdk.Keypair.fromSecret(src);
+        srcPubKey = srcKeyPair.publicKey();
+    }
+    catch {
+        return console.log("no keypair found")
+    }
+
     // instantiate horizon instance from stellar.org. the live network is "horizon.stellar.org"
     const server = new StellarSdk.Server("https://horizon-testnet.stellar.org");
 
-    // || these are deprecated, refer to: https://git.io/fj9fG
-    // StellarSdk.Network.usePublicNetwork();
-    // StellarSdk.Network.useTestNetwork();
-
-
     const handleClick = e => {
+        console.log('initiated transaction...')
         // check if destination account exists
-        server.loadAccount(reciever)   
+        server.loadAccount(reciever)
             .catch(err=>{
                 if (err instanceof StellarSdk.NotFoundError) {
                     throw new Error("destination does not exist!");
-                } else return err;
+                } else return console.log("error!");
             })
             .then(()=>{
                 return server.loadAccount(srcPubKey);

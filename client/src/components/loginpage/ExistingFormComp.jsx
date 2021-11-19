@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import * as yup from 'yup';
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 import FormControl from "react-bootstrap/FormControl";
 import Col from "react-bootstrap/Col";
 import "../../styles/compStyles/registerFormStyle.css";
@@ -25,6 +26,8 @@ export default props => {
     return (
         <>
             <div className="formwrap">
+                <h1>Log In</h1>
+                <p>&nbsp;</p>
                 <Formik
                     validationSchema={schema}
                     onSubmit={(e) => handleSubmit(e)}
@@ -80,7 +83,10 @@ export default props => {
                                     </Form.Text>
                                 </Form.Group>
                             </Row>
+                            <p>&nbsp;</p>
                             <Button type="submit">Submit</Button>
+                            <p>&nbsp;</p>
+                            <Link to="/login/new">Don't have an account?</Link>
                         </Form>
                     )}
                 </Formik>
