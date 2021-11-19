@@ -83,6 +83,8 @@ vision for project week:
 
 ## Stellar Project Setup
 
+These are the steps I'll be taking as I roll out new features.
+
 wallet setup: [stellar documentation](https://developers.stellar.org/docs/building-apps/project-setup/)
 
 federation address setup: [stellar documentation](https://developers.stellar.org/docs/glossary/federation/)
