@@ -88,9 +88,11 @@ wallet setup: [stellar documentation](https://developers.stellar.org/docs/buildi
 federation address setup: [stellar documentation](https://developers.stellar.org/docs/glossary/federation/)
 or their [github repo](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0002.md)
 
-### Securing Web-based Projects
+---
 
-"Securing Web-Based Porjects" found on [developers.stellar.org](https://developers.stellar.org/docs/tutorials/securing-projects/)
+### [Securing Web-based Projects](https://developers.stellar.org/docs/tutorials/securing-projects/)
+
+---
 
 SSL/TLS
 
