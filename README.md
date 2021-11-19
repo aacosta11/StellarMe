@@ -42,6 +42,7 @@ Dependencies:
 inspiration:
 
 - Keybase.io
+- StellarX
 - Lobstr.co
 - SatoshiPay
 
@@ -73,18 +74,23 @@ full vision:
 
 vision for project week:
 
-[] profile creation
-[] albedo wallet integration
--- or, make testnet accounts with horizon api and store public&private keys into db
-[x] testnet transactions
--- send, recieve, access testnet faucet
-[x] display balance
+- [] profile creation
+- [x] make testnet accounts with horizon api
+- [] store public&private keys into db
+- [x] send, recieve payments (testnet)
+- [x] display balance (testnet)
+- [] albedo wallet integration
 
 ## Stellar Project Setup
 
 wallet setup: [stellar documentation](https://developers.stellar.org/docs/building-apps/project-setup/)
 
+federation address setup: [stellar documentation](https://developers.stellar.org/docs/glossary/federation/)
+or their [github repo](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0002.md)
+
 ### Securing Web-based Projects
+
+"Securing Web-Based Porjects" found on [developers.stellar.org](https://developers.stellar.org/docs/tutorials/securing-projects/)
 
 SSL/TLS
 
