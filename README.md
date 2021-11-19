@@ -3,7 +3,7 @@
 MERN Full-Stack
 
 This site was designed for mobile screens first (screens < 425px wide), so plz use dev tools to
-browse this site with an emulated mobile screen.
+browse this site with an emulated mobile screen. Check out the /preview page!
 
 Dependencies:
 >stellarMe 📂 > server 📂
