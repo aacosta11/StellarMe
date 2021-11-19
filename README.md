@@ -74,12 +74,12 @@ full vision:
 
 vision for project week:
 
-- [] profile creation
+- [ ] profile creation
 - [x] make testnet accounts with horizon api
-- [] store public&private keys into db
+- [ ] store public&private keys into db
 - [x] send, recieve payments (testnet)
 - [x] display balance (testnet)
-- [] albedo wallet integration
+- [ ] albedo wallet integration
 
 ## Stellar Project Setup
 
