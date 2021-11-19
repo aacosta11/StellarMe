@@ -1,12 +1,9 @@
 # StellarMe
 
 MERN Full-Stack
-<<<<<<< HEAD
 
 This site was designed for mobile screens first (screens < 425px wide), so plz use dev tools to
 browse this site with an emulated mobile screen.
-=======
->>>>>>> e8f78023c7eeb37545aa3f041a134025d0d735c7
 
 Dependencies:
 >stellarMe 📂 > server 📂
