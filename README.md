@@ -1,7 +1,6 @@
 # StellarMe
 
 MERN Full-Stack
-1st Full Project🎉🎉🎊
 
 Dependencies:
 >stellarMe/server 📂
