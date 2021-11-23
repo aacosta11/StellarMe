@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useNavigate } from "react-router-dom";
-
 import "../../styles/compStyles/navbar.css";
 export default props => {
     const [show,setShow] = useState(false);
