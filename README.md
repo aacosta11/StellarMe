@@ -2,6 +2,8 @@
 
 MERN Full-Stack
 
+The [docs](https://developers.stellar.org/docs/building-apps/basic-wallet/) is outdated. Going to explore the [js-stellar-wallets] library and create my own functional components.
+
 This site was designed for mobile screens first (screens < 425px wide), so plz use dev tools to
 browse this site with an emulated mobile screen. Desktop support will come soon!
 
@@ -14,40 +16,6 @@ inspiration:
 - Interstellar
 - Lobstr.co
 - SatoshiPay
-
-Dependencies:
->stellarMe 📂 > server 📂
-
-```json
-{
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mongoose": "^6.0.12"
-  }
-}
-```
-
->stellarMe 📂 > client 📂
-
-```json
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.15.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "axios": "^0.24.0",
-    "bootstrap": "^5.1.3",
-    "formik": "^2.2.9",
-    "react": "^17.0.2",
-    "react-bootstrap": "^2.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^6.0.2",
-    "react-scripts": "4.0.3",
-    "stellar-sdk": "^9.1.0",
-    "web-vitals": "^1.1.2",
-    "yup": "^0.32.11"
-  },
-```
 
 ## Vision
 
