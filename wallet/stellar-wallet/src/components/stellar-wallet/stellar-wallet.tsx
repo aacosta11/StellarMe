@@ -1,21 +1,44 @@
-import { Component, h } from '@stencil/core';
-import * as StellarSdk from "stellar-sdk";
+import { Component, State } from "@stencil/core";
+
+import componentWillLoad from "./events/componentWillLoad";
+import render from "./events/render";
+
+import createAccount from "./methods/createAccount";
+import copyAddress from "./methods/copyAddress";
+import copySecret from "./methods/copySecret";
+import signOut from "./methods/signOut";
+import setPrompt from "./methods/setPrompt";
+
+import { Prompter } from "@prompt/prompt";
+
+interface StellarAccount {
+  publicKey: string;
+  keystore: string;
+}
 
 @Component({
-  tag: 'stellar-wallet',
-  styleUrl: 'stellar-wallet.scss',
+  tag: "stellar-wallet",
+  styleUrl: "wallet.scss",
   shadow: true,
 })
-export class StellarWallet {
+export class Wallet {
+  @State() account: StellarAccount;
+  @State() prompter: Prompter = { show: false };
+  @State() error: any = null;
 
-  render() {
-    return [
-      <h1>
-        {!!StellarSdk
-          ? "The StellarSdk is ready to rock 🤘"
-          : "Uh oh, the StellarSdk is missing 😱"}
-      </h1>,
-    ]
-  }
+  // Component events
+  componentWillLoad() {}
+  render() {}
 
+  // Stellar methods
+  createAccount = createAccount;
+  copyAddress = copyAddress;
+  copySecret = copySecret;
+  signOut = signOut;
+
+  // Misc methods
+  setPrompt = setPrompt;
 }
+
+Wallet.prototype.componentWillLoad = componentWillLoad;
+Wallet.prototype.render = render;
