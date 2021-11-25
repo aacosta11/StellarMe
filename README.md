@@ -2,12 +2,7 @@
 
 MERN Full-Stack
 
-The [docs](https://developers.stellar.org/docs/building-apps/basic-wallet/) are outdated. Going to explore the [js-stellar-wallets](https://github.com/stellar/js-stellar-wallets) library and create my own functional components.
-
-This site was designed for mobile screens first (screens < 425px wide), so plz use dev tools to
-browse this site with an emulated mobile screen. Desktop support will come soon!
-
-Check out the /preview page!
+Front-end is being remodeled. Stay tuned for updates!
 
 inspiration:
 
