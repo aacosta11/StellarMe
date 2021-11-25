@@ -1,0 +1,54 @@
+
+
+.topbar {
+    width: 100vw;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+.brandtitle:hover {
+    cursor: pointer;
+}
+@media only screen and (max-width: '430px') {
+    .topbar {
+        height: 4px;
+    }
+    .navbardropdown {
+        display: none;
+    }
+}   
+
+@media only screen and (min-width: '431px') and (max-width: '989px') {
+    .topbar {
+        height: 7px;
+    }
+    .navbardropdown {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: '990px') {
+    .topbar {
+        height: 10px;
+    }
+    .navbarwrap {
+        .brandtitle {
+            font-size: 2rem;
+        }
+        .navbaractions {
+            display: none;
+        }
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

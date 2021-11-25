@@ -1,0 +1,27 @@
+
+.footerwrap {
+    // position: absolute;
+    // bottom: 0;
+    border-top: 3px solid black;
+}
+
+@media only screen and (max-width: '430px') {}
+@media only screen and (min-width: '431px') {}
+@media only screen and (min-width: '1200px') {
+    .footerwrap {
+        height: 15vh;
+
+        .footerbrand {
+            column-gap: 1rem;
+        }
+        .footerlogo {
+            width: 30px;
+            height: 30px;
+            border: 3px solid black;
+        }
+        .footerlastsection {
+            height: 7rem;
+            border: 3px solid black;
+        }
+    }
+}

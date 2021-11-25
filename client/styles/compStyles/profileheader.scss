@@ -1,0 +1,13 @@
+
+.dashheaderwrap {
+    width: 100vw;
+    border: 3px solid black;
+}
+
+@media only screen and (max-width: '430px') {}
+@media only screen and (min-width: '431px') {}
+@media only screen and (min-width: '1200px') {
+    .dashheaderwrap {
+        height: 4rem;
+    }
+}
