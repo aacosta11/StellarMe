@@ -1,7 +1,10 @@
 import React from "react";
+
 const ProfilePage = ({userID}) => {
-    return (<>
-        <h1>{userID}</h1>
-    </>)
+    return (
+        <div className="dashbody">
+            {userID}
+        </div>
+    )
 }
 export default ProfilePage;

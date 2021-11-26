@@ -1,8 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
+import { useRouter } from "next/router";
 const Footer = props => {
-
+    const router = useRouter();
     return (
         <>
         <Container fluid className="footerwrap">
@@ -10,7 +11,7 @@ const Footer = props => {
             justify-content-between
             align-items-center
             ">
-                <Col lg={3} className="d-flex align-items-center justify-content-center footerbrand">
+                <Col lg={3} className="d-flex align-items-center justify-content-center footerbrand" onClick={()=>{router.push('/')}}>
                     <div className="footerlogo "></div>
                     <h1>StellarMe</h1>
                 </Col>

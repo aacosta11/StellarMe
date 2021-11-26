@@ -2,7 +2,7 @@
 
 MERN Full-Stack
 
-Front-end is being remodeled. Stay tuned for updates!
+Front-end under development. Stay tuned!
 
 inspiration:
 

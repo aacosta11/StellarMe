@@ -1,11 +1,12 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import TopBar from "../TopBar";
 const NavBar = props => {
     const router = useRouter();
     return (
         <>
-            <div className="topbar"></div>
+            <TopBar/>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="navbarwrap"> 
                 <Container>
                     <Navbar.Brand onClick={(e)=>router.push("/")} className="brandtitle">StellarMe</Navbar.Brand>
@@ -16,15 +17,18 @@ const NavBar = props => {
                         </Nav>
                         <Nav>
                             <Nav.Link onClick={(e)=>e.preventDefault()}>Get started</Nav.Link>
+
                             <Nav.Link onClick={(e)=>e.preventDefault()} className="navbaractions">Login</Nav.Link>
                             <Nav.Link onClick={(e)=>e.preventDefault()} className="navbaractions">action #1</Nav.Link>
-                            <Nav.Link onClick={(e)=>e.preventDefault()} className="navbaractions">action #2</Nav.Link>
+                            <Nav.Link onClick={(e)=>router.push("/dashboard/abc")} className="navbaractions">/dashboard/abc</Nav.Link>
+
                             <NavDropdown title="Menu" id="collapsible-nav-dropdown" className="navbardropdown">
                                 <NavDropdown.Item onClick={(e)=>e.preventDefault()}>Login</NavDropdown.Item>
                                 <NavDropdown.Item onClick={(e)=>e.preventDefault()}>Register</NavDropdown.Item>
                                 <NavDropdown.Item onClick={(e)=>e.preventDefault()}>action #1</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={(e)=>router.push("/dashboard")}>Dashboard</NavDropdown.Item>
+                                <NavDropdown.Item onClick={(e)=>router.push("/dashboard/abc")}>/abc</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
