@@ -3,8 +3,8 @@ import { motion, useTransform } from "framer-motion";
 import { Nav } from "react-bootstrap";
 import TopBar from "../TopBar";
 import Image from "next/image";
-import lumen from "../../img/lumenHalfOne.png";
-import lumen2 from "../../img/lumenHalfTwo.png";
+import lumen from "../../img/stellar-top.png";
+import lumen2 from "../../img/stellar-bottom.png";
 // import { useRouter } from "next/router";
 const DashboardNavbar = props => {
     const [activeTab, setActiveTab] = useState('');
