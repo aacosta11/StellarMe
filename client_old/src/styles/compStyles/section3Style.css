@@ -1,9 +1,0 @@
-* {margin:0;padding:0;box-sizing:border-box;}
-
-@media only screen and (max-width: 425px) {
-    .sec3container {
-        width: 100vw;
-        height: 15rem;
-        background-color: grey;
-    }
-}

@@ -123,5 +123,3 @@ Scan your website and libraries for vulnerabilities
 SQL Injections
 
 - Have inputs filtered, and validated
-
-[EOF]
